@@ -12,6 +12,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Survey extends AppCompatActivity {
 
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.text_answer_question);
+        startSurvey();
+    }
+
+
+
     private String [] answers= new String[5];
 
     private String Questions [] = {
@@ -27,26 +36,16 @@ public class Survey extends AppCompatActivity {
     };
 
 
-    @Override
-    public void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        startSurvey();
-    }
+
 
 
     public void ageQuestion() {
-            setContentView(R.layout.text_answer_question);
-            try {
-                TimeUnit.SECONDS.sleep(15);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             TextView questionTextView;
             final EditText answerEditText;
             Button nextButton;
 
             questionTextView = findViewById(R.id.TextQuestionTextView);
-            //    questionTextView.setText(Questions[0]);
+            questionTextView.setText(Questions[0]);
             answerEditText = findViewById(R.id.TextAnswerEditText);
             nextButton = findViewById(R.id.TextButton);
 
@@ -83,16 +82,64 @@ public class Survey extends AppCompatActivity {
 
     private void workingTimeQuestion()
     {
+        TextView questionTextView;
+        final EditText answerEditText;
+        Button nextButton;
 
+        questionTextView = findViewById(R.id.TextQuestionTextView);
+        questionTextView.setText(Questions[2]);
+        answerEditText = findViewById(R.id.TextAnswerEditText);
+        nextButton = findViewById(R.id.TextButton);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answers[2] = answerEditText.getText().toString();
+            }
+        });
 
 
     }
 
     private void hobbyTimeQuestion()
-    {}
+    {
+        TextView questionTextView;
+        final EditText answerEditText;
+        Button nextButton;
+
+        questionTextView = findViewById(R.id.TextQuestionTextView);
+        questionTextView.setText(Questions[3]);
+        answerEditText = findViewById(R.id.TextAnswerEditText);
+        nextButton = findViewById(R.id.TextButton);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answers[3] = answerEditText.getText().toString();
+            }
+        });
+
+    }
 
     private void travellingTimeQueston()
-    {}
+    {
+        TextView questionTextView;
+        final EditText answerEditText;
+        Button nextButton;
+
+        questionTextView = findViewById(R.id.TextQuestionTextView);
+        questionTextView.setText(Questions[4]);
+        answerEditText = findViewById(R.id.TextAnswerEditText);
+        nextButton = findViewById(R.id.TextButton);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answers[4] = answerEditText.getText().toString();
+                          }
+        });
+
+    }
 
 
 
@@ -109,7 +156,7 @@ public class Survey extends AppCompatActivity {
                     ageQuestion();
                     break;
                 case 1:
-                    employmentQuestion();
+                  //  employmentQuestion();
                     break;
                 case 2:
                     workingTimeQuestion();

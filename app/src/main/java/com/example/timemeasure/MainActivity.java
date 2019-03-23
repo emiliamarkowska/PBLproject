@@ -1,5 +1,6 @@
 package com.example.timemeasure;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,32 +17,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         Button mainButton;
-        final TextView randomText;
-        randomText = findViewById(R.id.twojastara);
         mainButton = findViewById(R.id.mainButton);
 
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                randomText.setVisibility(View.VISIBLE);
-
-                setContentView(R.layout.text_answer_question);
-
+                Intent toy = new Intent(v.getContext(), Survey.class);
+                startActivityForResult(toy,0);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
 }
