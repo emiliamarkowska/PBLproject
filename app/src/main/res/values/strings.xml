@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TimeMeasure</string>
+    
+    
+    <string-array name="emploment_spinner">
+        <item>Worker</item>
+        <item>Student</item>
+        <item>Unemployed</item>
+    </string-array>
 </resources>
