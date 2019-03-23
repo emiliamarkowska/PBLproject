@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView textView;
+      /*  final TextView textView;
         final EditText editText;
         Button button;
 
@@ -28,6 +28,25 @@ public class MainActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
                 textView.setText(text);
             }
-        });
+        });*/
+
+      TextView questionTextView;
+      EditText answerEditText;
+      Button nextButton;
+
+      questionTextView = findViewById(R.id.AgeQuestionTextView);
+      answerEditText = findViewById(R.id.AgeQuestionEditText);
+      nextButton = findViewById(R.id.NextButton);
+
+      nextButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+          }
+      });
+
+
+
+
     }
 }
