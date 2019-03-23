@@ -12,27 +12,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 
-      TextView questionTextView;
-      final EditText answerEditText;
-      Button nextButton;
-
-      final String [] answers= new String[5];
-
-      questionTextView = findViewById(R.id.AgeQuestionTextView);
-      answerEditText = findViewById(R.id.AgeQuestionEditText);
-      nextButton = findViewById(R.id.NextButton);
-
-      nextButton.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-                answers[0] = answerEditText.getText().toString();
-          }
-      });
-
-
-
+        Survey survey = new Survey();
+        survey.startSurvey();
 
     }
 }
