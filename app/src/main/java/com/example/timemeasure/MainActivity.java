@@ -14,20 +14,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView textView;
-        final EditText editText;
-        Button button;
+      TextView questionTextView;
+      final EditText answerEditText;
+      Button nextButton;
 
-        textView = findViewById(R.id.textView2);
-        editText = findViewById(R.id.editText2);
-        button = findViewById(R.id.button);
+      final String [] answers= new String[5];
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = editText.getText().toString();
-                textView.setText(text);
-            }
-        });
+      questionTextView = findViewById(R.id.AgeQuestionTextView);
+      answerEditText = findViewById(R.id.AgeQuestionEditText);
+      nextButton = findViewById(R.id.NextButton);
+
+      nextButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+                answers[0] = answerEditText.getText().toString();
+          }
+      });
+
+
+
+
     }
 }
