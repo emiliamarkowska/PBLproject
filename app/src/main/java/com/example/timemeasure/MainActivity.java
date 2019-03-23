@@ -17,5 +17,16 @@ public class MainActivity extends AppCompatActivity {
         Survey survey = new Survey();
         survey.startSurvey();
 
+
+
+
+
+
+
+
+
+
+
+
     }
 }

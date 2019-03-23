@@ -4,13 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Survey extends AppCompatActivity {
 
-
     private String [] answers= new String[5];
-
 
     private String Questions [] = {
             "How old are you?",
@@ -24,24 +23,16 @@ public class Survey extends AppCompatActivity {
             "studying", "employed", "unemployed"
     };
 
-    public String getQuestions(int a) {
-        return Questions[a];
-    }
-
-    public String getAnswersEmployment(int a) {
-        return AnswersEmployment[a];
-    }
-
-
     private void ageQuestion()
     {
-        setContentView(R.layout.age_qustion);
+        setContentView(R.layout.text_answer_question);
 
         TextView questionTextView;
         final EditText answerEditText;
         Button nextButton;
 
         questionTextView = findViewById(R.id.AgeQuestionTextView);
+        questionTextView.setText(Questions[0]);
         answerEditText = findViewById(R.id.AgeQuestionEditText);
         nextButton = findViewById(R.id.NextButton);
 
@@ -49,16 +40,40 @@ public class Survey extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                answers[0] = answerEditText.getText().toString();
             }
         });
     }
 
     private void employmentQuestion()
-    {}
+    {
+        setContentView(R.layout.spinner_answer_question);
+
+        TextView questionTextView;
+        final Spinner answerEditText;
+        Button nextButton;
+
+        questionTextView = findViewById(R.id.QuestionSpinner);
+        answerEditText = findViewById(R.id.Spinner);
+        nextButton = findViewById(R.id.NextButton);
+
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            //    answers[1] = answerEditText.get().toString();
+            }
+        });
+
+
+    }
 
     private void workingTimeQuestion()
-    {}
+    {
+
+
+
+    }
 
     private void hobbyTimeQuestion()
     {}

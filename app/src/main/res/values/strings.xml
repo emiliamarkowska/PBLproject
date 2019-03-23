@@ -3,7 +3,7 @@
     
     
     <string-array name="emploment_spinner">
-        <item>Worker</item>
+        <item>Employed</item>
         <item>Student</item>
         <item>Unemployed</item>
     </string-array>
