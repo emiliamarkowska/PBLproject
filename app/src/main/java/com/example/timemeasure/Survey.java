@@ -1,11 +1,14 @@
 package com.example.timemeasure;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.concurrent.TimeUnit;
 
 public class Survey extends AppCompatActivity {
 
@@ -23,27 +26,37 @@ public class Survey extends AppCompatActivity {
             "studying", "employed", "unemployed"
     };
 
-    private void ageQuestion()
-    {
-        setContentView(R.layout.text_answer_question);
 
-        TextView questionTextView;
-        final EditText answerEditText;
-        Button nextButton;
-
-        questionTextView = findViewById(R.id.AgeQuestionTextView);
-        questionTextView.setText(Questions[0]);
-        answerEditText = findViewById(R.id.AgeQuestionEditText);
-        nextButton = findViewById(R.id.NextButton);
-
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                answers[0] = answerEditText.getText().toString();
-            }
-        });
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        startSurvey();
     }
+
+
+    public void ageQuestion() {
+            setContentView(R.layout.text_answer_question);
+            try {
+                TimeUnit.SECONDS.sleep(15);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            TextView questionTextView;
+            final EditText answerEditText;
+            Button nextButton;
+
+            questionTextView = findViewById(R.id.TextQuestionTextView);
+            //    questionTextView.setText(Questions[0]);
+            answerEditText = findViewById(R.id.TextAnswerEditText);
+            nextButton = findViewById(R.id.TextButton);
+
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    answers[0] = answerEditText.getText().toString();
+                }
+            });
+        }
 
     private void employmentQuestion()
     {
@@ -55,7 +68,7 @@ public class Survey extends AppCompatActivity {
 
         questionTextView = findViewById(R.id.QuestionSpinner);
         answerEditText = findViewById(R.id.Spinner);
-        nextButton = findViewById(R.id.NextButton);
+        nextButton = findViewById(R.id.SpinnerButton);
 
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +102,6 @@ public class Survey extends AppCompatActivity {
     {
         int i = 0;
         int questionNumber = 5;
-
         while(i<questionNumber)
         {
             switch (i) {
