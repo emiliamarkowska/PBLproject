@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">TimeMeasure</string>
-    
-    
+
+
     <string-array name="emploment_spinner">
         <item>Employed</item>
         <item>Student</item>
         <item>Unemployed</item>
     </string-array>
+
+    <string name="AgeQuestion">How old are you?</string>
+    <string name="EmploymentQuestion">What is your employment status?</string>
+    <string name="WorkQuestion">How much time do you send at work/school/etc per week?</string>
+    <string name="HobbyQuestion">How much time do you spend on your hobby per week?</string>
+    <string name="TravelQuestion">How much time do you spend on traveling per week?</string>
+
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

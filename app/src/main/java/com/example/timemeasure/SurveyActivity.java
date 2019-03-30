@@ -9,8 +9,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
-public class Survey extends AppCompatActivity {
+public class SurveyActivity extends AppCompatActivity {
 
+/*
     private String[] answers = new String[5];
     private String Questions[] = {
             "How old are you?",
@@ -27,14 +28,31 @@ public class Survey extends AppCompatActivity {
     private TextView questionTextView;
     private EditText answerEditText;
     private Button nextButton;
+*/
 
 
     @Override
     protected  void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.text_answer_question);
+        setContentView(R.layout.survey_activity);
 
-        questionTextView = findViewById(R.id.TextQuestionTextView);
+        if(findViewById(R.id.fragment_container)!=null)
+        {
+            if(savedInstanceState!=null)
+            {
+                return;
+            }
+
+            AnswerQuestionFragment answerQuestionFragment = new AnswerQuestionFragment();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, answerQuestionFragment ,null).commit();
+
+
+        }
+
+
+
+/*        questionTextView = findViewById(R.id.TextQuestionTextView);
         answerEditText = findViewById(R.id.TextAnswerEditText);
         nextButton = findViewById(R.id.TextButton);
         updateQuestion();
@@ -43,27 +61,19 @@ public class Survey extends AppCompatActivity {
             public void onClick(View v) {
                 answers[iterator] = answerEditText.getText().toString();
                 iterator++;
-
-                if(iterator == 6)
-                {
-                    Intent toy = new Intent(v.getContext(), Answers.class);
-                    startActivityForResult(toy,0);
-                }
-
                 updateQuestion();
-
             }
-        });
+        });*/
 
 
 
     }
-        public void updateQuestion()
+/*        public void updateQuestion()
         {
               questionTextView.setText(Questions[iterator]);
         }
 
     public String getAnswers(int a) {
         return answers[a];
-    }
+    }*/
 }
