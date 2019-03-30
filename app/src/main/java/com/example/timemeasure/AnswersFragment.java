@@ -35,7 +35,7 @@ public class AnswersFragment extends Fragment {
 
         Bundle bundle = getArguments();
         String [] answers = bundle.getStringArray("answers");
-
+//mala zmiana w pliku
         textView[0].setText(answers[0]);
         textView[1].setText(answers[1]);
         textView[2].setText(answers[2]);
