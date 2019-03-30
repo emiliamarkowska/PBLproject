@@ -5,6 +5,7 @@ import java.util.Date;
 
 
     public class User {
+        // komentarz
         private int ID;
         private int age;
         private String studentOrWorker;
