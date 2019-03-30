@@ -8,13 +8,21 @@
         <item>Unemployed</item>
     </string-array>
 
+
+    <string-array name="Questions">
+        <item>How old are you?</item>
+        <item>What is your employment status?</item>
+        <item>How much time do you send at work/school/etc per week?</item>
+        <item>How much time do you spend on your hobby per week?</item>
+        <item>How much time do you spend on traveling per week?</item>
+    </string-array>
+
+
     <string name="AgeQuestion">How old are you?</string>
     <string name="EmploymentQuestion">What is your employment status?</string>
     <string name="WorkQuestion">How much time do you send at work/school/etc per week?</string>
     <string name="HobbyQuestion">How much time do you spend on your hobby per week?</string>
     <string name="TravelQuestion">How much time do you spend on traveling per week?</string>
-
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

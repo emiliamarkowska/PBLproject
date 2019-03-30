@@ -1,34 +1,16 @@
 package com.example.timemeasure;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.concurrent.TimeUnit;
-public class SurveyActivity extends AppCompatActivity {
 
-/*
-    private String[] answers = new String[5];
-    private String Questions[] = {
-            "How old are you?",
-            "What is your employment status?",
-            "How much time do you send at work/school/etc per week?",
-            "How much time do you spend on your hobby per week? ",
-            "How much time do you spend on traveling per week?"
-    };
-    private int iterator;
-    private String AnswersEmployment[] = {
-            "studying", "employed", "unemployed"
-    };
+public class SurveyActivity extends AppCompatActivity implements AnswerQuestionFragment.OnMessageSendListener {
+    private int iterator = 0;
 
-    private TextView questionTextView;
-    private EditText answerEditText;
-    private Button nextButton;
-*/
+    String answers [] = new String[5];
 
 
     @Override
@@ -42,38 +24,69 @@ public class SurveyActivity extends AppCompatActivity {
             {
                 return;
             }
-
             AnswerQuestionFragment answerQuestionFragment = new AnswerQuestionFragment();
-
+            Bundle bundle = new Bundle();
+            bundle.putInt("iterator", iterator);
+            answerQuestionFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, answerQuestionFragment ,null).commit();
-
-
         }
-
-
-
-/*        questionTextView = findViewById(R.id.TextQuestionTextView);
-        answerEditText = findViewById(R.id.TextAnswerEditText);
-        nextButton = findViewById(R.id.TextButton);
-        updateQuestion();
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                answers[iterator] = answerEditText.getText().toString();
-                iterator++;
-                updateQuestion();
-            }
-        });*/
-
-
-
     }
-/*        public void updateQuestion()
-        {
-              questionTextView.setText(Questions[iterator]);
-        }
 
-    public String getAnswers(int a) {
-        return answers[a];
-    }*/
+    @Override
+    public void OnMessageSend(String message) {
+
+        answers[iterator] = message;
+        iterator ++;
+
+        switch (iterator){
+            case 1:
+                SpinnerQuestionFragment spinnerQuestionFragment = new SpinnerQuestionFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("iterator", iterator);
+                spinnerQuestionFragment.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, spinnerQuestionFragment, null);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                break;
+            case 2:
+                AnswerQuestionFragment answerQuestionFragment = new AnswerQuestionFragment();
+                Bundle bundle2 = new Bundle();
+                bundle2.putInt("iterator", iterator);
+                answerQuestionFragment.setArguments(bundle2);
+                FragmentTransaction fragmentTransaction2  =  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment, null);
+                fragmentTransaction2.addToBackStack(null);
+                fragmentTransaction2.commit();
+                break;
+            case 3:
+                AnswerQuestionFragment answerQuestionFragment3 = new AnswerQuestionFragment();
+                Bundle bundle3 = new Bundle();
+                bundle3.putInt("iterator", iterator);
+                answerQuestionFragment3.setArguments(bundle3);
+                FragmentTransaction fragmentTransaction3  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment3, null);
+                fragmentTransaction3.addToBackStack(null);
+                fragmentTransaction3.commit();
+                break;
+            case 4:
+                AnswerQuestionFragment answerQuestionFragment4 = new AnswerQuestionFragment();
+                Bundle bundle4 = new Bundle();
+                bundle4.putInt("iterator", iterator);
+                answerQuestionFragment4.setArguments(bundle4);
+                FragmentTransaction fragmentTransaction4  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment4, null);
+                fragmentTransaction4.addToBackStack(null);
+                fragmentTransaction4.commit();
+                break;
+            case 5:
+                AnswersFragment answersFragment = new AnswersFragment();
+                Bundle bundle5 = new Bundle();
+                bundle5.putStringArray("answers", answers);
+                answersFragment.setArguments(bundle5);
+                FragmentTransaction fragmentTransaction5  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answersFragment, null);
+                fragmentTransaction5.addToBackStack(null);
+                fragmentTransaction5.commit();
+                break;
+        }
+    }
+
+
+
 }
