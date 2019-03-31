@@ -7,9 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-
+    // DATABASE STRINGS
     public static final String databaseName = "dataBaseTimeMeasure";
     public static final int version = 1;
+
     // NAMES OF TABLE AND COLUMNS OF USERS AND INFORMATION ABOUT THEM
     public static final String tableUsersName = "usersTable";
     public static final String userID = "userID";
@@ -27,10 +28,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String appName = "appName";
     public static final String timeOfUsing = "timeOfUsing";
 
+    MainActivity activity;
 
-    public DataBaseHelper(Context context) {
+
+    public DataBaseHelper(Context context, MainActivity activity) {
         super(context, databaseName, null, version);
         SQLiteDatabase database = this.getWritableDatabase();
+        this.activity = activity;
     }
 
     @Override

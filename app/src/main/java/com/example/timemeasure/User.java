@@ -15,10 +15,11 @@ import java.util.Date;
         private double timeOnTravel;
 
 
-        public User(int age, double timeAtSchool, double timeOnHobby, double timeOnTravel)
+        public User(int age, String studentOrWorker, double timeAtSchool, double timeOnHobby, double timeOnTravel)
         {
             this.ID = 0;
             this.age = age;
+            this.studentOrWorker = studentOrWorker;
             this.timeAtSchool = timeAtSchool;
             this.timeOnHobby = timeOnHobby;
             this.timeOnTravel = timeOnTravel;
@@ -26,6 +27,20 @@ import java.util.Date;
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Date date = new Date();
 
+            this.date = dateFormat.format(date);
+        }
+
+        public User(String[] answers)
+        {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = new Date();
+
+            this.ID = 0;
+            this.age = Integer.parseInt(answers[0]);
+            this.studentOrWorker = answers[1];
+            this.timeAtSchool = Double.parseDouble(answers[2]);
+            this.timeOnHobby = Double.parseDouble(answers[3]);
+            this.timeOnTravel = Double.parseDouble(answers[4]);
             this.date = dateFormat.format(date);
         }
 

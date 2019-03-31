@@ -14,7 +14,6 @@ import android.widget.TextView;
  */
 public class AnswersFragment extends Fragment {
 
-
     public AnswersFragment() {
         // Required empty public constructor
     }
@@ -33,8 +32,10 @@ public class AnswersFragment extends Fragment {
         textView[3] = view.findViewById(R.id.textView4);
         textView[4] = view.findViewById(R.id.textView5);
 
+
         Bundle bundle = getArguments();
         String [] answers = bundle.getStringArray("answers");
+
 //mala zmiana w pliku
         textView[0].setText(answers[0]);
         textView[1].setText(answers[1]);

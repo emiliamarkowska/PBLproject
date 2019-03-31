@@ -10,21 +10,42 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DataBaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        dbHelper = new DataBaseHelper(this, MainActivity.this);
         Button mainButton;
         mainButton = findViewById(R.id.mainButton);
 
-        mainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent toy = new Intent(v.getContext(), SurveyActivity.class);
-                startActivityForResult(toy,0);
+        if(isDatabaseEmpty())
+        {
+            if(getIntent().getStringArrayExtra("Answers") != null)
+            {
+                User user = new User(getIntent().getStringArrayExtra("Answers"));
+                dbHelper.addInformationAboutUser(user);
             }
-        });
+            else
+                {
+                    Intent intent = new Intent(this, SurveyActivity.class);
+                    startActivityForResult(intent,0);
+                }
+        }
+
+
+
+
+    }
+    public DataBaseHelper getDbHelper()
+    {
+        return this.dbHelper;
     }
 
+    public boolean isDatabaseEmpty()
+    {
+        return dbHelper.isEmpty();
+    }
 
 }

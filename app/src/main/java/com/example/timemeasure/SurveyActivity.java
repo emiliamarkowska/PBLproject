@@ -1,5 +1,6 @@
 package com.example.timemeasure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -9,26 +10,26 @@ import android.widget.TextView;
 
 public class SurveyActivity extends AppCompatActivity implements AnswerQuestionFragment.OnMessageSendListener {
     private int iterator = 0;
-
-    String answers [] = new String[5];
+    String answers[] = new String[5];
+    private DataBaseHelper dbHelper;
+    Intent intent;
 
 
     @Override
-    protected  void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.survey_activity);
+        intent = new Intent(this, MainActivity.class);
 
-        if(findViewById(R.id.fragment_container)!=null)
-        {
-            if(savedInstanceState!=null)
-            {
+        if (findViewById(R.id.fragment_container) != null) {
+            if (savedInstanceState != null) {
                 return;
             }
             AnswerQuestionFragment answerQuestionFragment = new AnswerQuestionFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("iterator", iterator);
             answerQuestionFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, answerQuestionFragment ,null).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, answerQuestionFragment, null).commit();
         }
     }
 
@@ -36,9 +37,9 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
     public void OnMessageSend(String message) {
 
         answers[iterator] = message;
-        iterator ++;
+        iterator++;
 
-        switch (iterator){
+        switch (iterator) {
             case 1:
                 SpinnerQuestionFragment spinnerQuestionFragment = new SpinnerQuestionFragment();
                 Bundle bundle = new Bundle();
@@ -53,7 +54,7 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
                 Bundle bundle2 = new Bundle();
                 bundle2.putInt("iterator", iterator);
                 answerQuestionFragment.setArguments(bundle2);
-                FragmentTransaction fragmentTransaction2  =  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment, null);
+                FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment, null);
                 fragmentTransaction2.addToBackStack(null);
                 fragmentTransaction2.commit();
                 break;
@@ -62,7 +63,7 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
                 Bundle bundle3 = new Bundle();
                 bundle3.putInt("iterator", iterator);
                 answerQuestionFragment3.setArguments(bundle3);
-                FragmentTransaction fragmentTransaction3  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment3, null);
+                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment3, null);
                 fragmentTransaction3.addToBackStack(null);
                 fragmentTransaction3.commit();
                 break;
@@ -71,7 +72,7 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
                 Bundle bundle4 = new Bundle();
                 bundle4.putInt("iterator", iterator);
                 answerQuestionFragment4.setArguments(bundle4);
-                FragmentTransaction fragmentTransaction4  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment4, null);
+                FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answerQuestionFragment4, null);
                 fragmentTransaction4.addToBackStack(null);
                 fragmentTransaction4.commit();
                 break;
@@ -80,13 +81,12 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
                 Bundle bundle5 = new Bundle();
                 bundle5.putStringArray("answers", answers);
                 answersFragment.setArguments(bundle5);
-                FragmentTransaction fragmentTransaction5  = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answersFragment, null);
+                FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answersFragment, null);
+                intent.putExtra("Answers", answers);
                 fragmentTransaction5.addToBackStack(null);
                 fragmentTransaction5.commit();
+                startActivity(intent);
                 break;
         }
     }
-
-
-
 }
