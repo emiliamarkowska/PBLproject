@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         }
 
-        Intent intent = new Intent(this, SurveyActivity.class);
-        startActivityForResult(intent,0);
-
-
     }
     public DataBaseHelper getDbHelper()
     {
