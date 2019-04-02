@@ -2,8 +2,12 @@ package com.example.timemeasure;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -77,14 +81,7 @@ public class SurveyActivity extends AppCompatActivity implements AnswerQuestionF
                 fragmentTransaction4.commit();
                 break;
             case 5:
-                AnswersFragment answersFragment = new AnswersFragment();
-                Bundle bundle5 = new Bundle();
-                bundle5.putStringArray("answers", answers);
-                answersFragment.setArguments(bundle5);
-                FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, answersFragment, null);
                 intent.putExtra("Answers", answers);
-                fragmentTransaction5.addToBackStack(null);
-                fragmentTransaction5.commit();
                 startActivity(intent);
                 break;
         }

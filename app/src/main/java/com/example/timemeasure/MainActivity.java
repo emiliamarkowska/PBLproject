@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         dbHelper = new DataBaseHelper(this, MainActivity.this);
-        Button mainButton;
-        mainButton = findViewById(R.id.mainButton);
+        Button statsButton;
+        statsButton = findViewById(R.id.showStats);
 
         if(isDatabaseEmpty())
         {
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 }
         }
 
-
+        Intent intent = new Intent(this, SurveyActivity.class);
+        startActivityForResult(intent,0);
 
 
     }
